@@ -1,4 +1,5 @@
 request/
+.cask
 .cache
 .depend
 pyim/
