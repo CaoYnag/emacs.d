@@ -2,7 +2,8 @@ request/
 .cask
 .cache
 .depend
-#pyim/
+# only ignore pyim cache dir in root. site-lisp/pyim added as submodule
+/pyim/
 anaconda-mode/
 .wg-file.el
 /url/cache
