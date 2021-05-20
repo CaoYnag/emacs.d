@@ -1,0 +1,24 @@
+[submodule "site-lisp/eim"]
+	path = site-lisp/eim
+	url = https://github.com/wenbinye/emacs-eim.git
+[submodule "site-lisp/markdown-mode"]
+	path = site-lisp/markdown-mode
+	url = https://github.com/jrblevin/markdown-mode
+[submodule "site-lisp/company-statistics"]
+	path = site-lisp/company-statistics
+	url = https://github.com/company-mode/company-statistics.git
+[submodule "site-lisp/xr"]
+	path = site-lisp/xr
+	url = https://github.com/mattiase/xr.git
+[submodule "site-lisp/popup"]
+	path = site-lisp/popup
+	url = https://github.com/auto-complete/popup-el.git
+[submodule "site-lisp/async"]
+	path = site-lisp/async
+	url = https://github.com/jwiegley/emacs-async
+[submodule "site-lisp/pyim-basedict"]
+	path = site-lisp/pyim-basedict
+	url = https://github.com/tumashu/pyim-basedict
+[submodule "site-lisp/pyim"]
+	path = site-lisp/pyim
+	url = https://github.com/tumashu/pyim

@@ -1,26 +1,74 @@
+;; (package-initialize)
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(setq package-archives '(
-			 ("GNU ELPA" . "http://elpa.emacs-china.org/gnu/")
-			 ("MELPA" . "http://elpa.emacs-china.org/melpa/")
-			 ("MELPA Stable" . "http://elpa.emacs-china.org/melpa-stable/")
-			 ("Marmalade" . "http://elpa.emacs-china.org/marmalade/")
-			 ("Org" . "http://elpa.emacs-china.org/org/")
-			 ("Sunrise Commander ELPA" . "http://elpa.emacs-china.org/sunrise-commander/")
-			 ("user42 ELPA" . "http://elpa.emacs-china.org/user42/")
-			 ))
+(setq user-init-file (or load-file-name (buffer-file-name)))
+(setq user-emacs-directory (file-name-directory user-init-file))
 
-(package-initialize)
+(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
+(setq *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)) )
+(setq *emacs27* (>= emacs-major-version 27))
 
-(add-to-list 'load-path "~/.emacs.d/modes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;; don't GC during startup to save time
+(setq gc-cons-percentage 0.6)
+(setq gc-cons-threshold most-positive-fixnum)
 
-(autoload 'markdown-mode "markdown-mode.el" "Major mode for editing Markdown files" t)  
-(setq auto-mode-alist  
-(cons '(".md" . markdown-mode) auto-mode-alist))
+(defconst my-emacs-d (file-name-as-directory user-emacs-directory)
+  "Directory of emacs.d")
+
+(defconst my-site-lisp-dir (concat my-emacs-d "site-lisp")
+  "Directory of site-lisp")
+
+(defconst my-lisp-dir (concat my-emacs-d "lisp")
+  "Directory of lisp.")
+
+(defun my-vc-merge-p ()
+  "Use Emacs for git merge only?"
+  (boundp 'startup-now))
+
+(defun require-init (pkg &optional maybe-disabled)
+  "Load PKG if MAYBE-DISABLED is nil or it's nil but start up in normal slowly."
+  (when (or (not maybe-disabled) (not (my-vc-merge-p)))
+    (load (file-truename (format "%s/%s" my-lisp-dir pkg)) t t)))
+
+(defun my-add-subdirs-to-load-path (lisp-dir)
+  "Add sub-directories under LISP-DIR into `load-path'."
+  (let* ((default-directory lisp-dir))
+    (setq load-path
+          (append
+           (delq nil
+                 (mapcar (lambda (dir)
+                           (unless (string-match-p "^\\." dir)
+                             (expand-file-name dir)))
+                         (directory-files my-site-lisp-dir)))
+           load-path))))
+
+
+(message "before init list")
+;; init list
+(let* ((file-name-handler-alist nil))
+  (my-add-subdirs-to-load-path (file-name-as-directory my-site-lisp-dir))
+  (require-init 'init-autoload t)
+  (require-init 'init-utils)
+  (require-init 'init-elpa)
+  
+  (require-init 'init-company t)
+  (require-init 'init-org)
+  (require-init 'init-markdown t)
+  ;; (require-init 'init-eim)
+  (require-init 'init-pyim)
+  )
+
+(message "init list done")
+
+(add-to-list 'custom-theme-load-path (concat my-emacs-d "themes"))
+(load-theme 'melancholy t)
+
+
+;; some default styles
+(global-linum-mode t)
+(setq inhibit-splash-screen t)
+(setq default-tab-width 4)
+(setq c-basic-offset 4)
+(setq c-default-style "linux" c-basic-offset 4)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -29,7 +77,7 @@
  '(custom-safe-themes
    '("716f0a8a9370912d9e6659948c2cb139c164b57ef5fda0f337f0f77d47fe9073" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" "032d5dc72a31ebde5fae25a8c1ef48bac6ba223588a1563d10dbf3a344423879" default))
  '(package-selected-packages
-   '(melancholy-theme afternoon-theme magit irony company-lua company-cmake company-c-headers ## company auto-correct))
+   '(simple-httpd highlight-symbol which-key ace-pinyin org-re-reveal gnu-elpa-keyring-update eim esup pyim pdf-tools typescript-mode rust-mode nov vimrc-mode visual-regexp elpa-mirror toc-org shackle adoc-mode keyfreq auto-package-update counsel-css undo-fu undo-tree websocket iedit emms web-mode ivy-hydra hydra neotree legalese elpy lsp-mode company-native-complete native-complete yasnippet-snippets cliphist git-link tagedit rjsx-mode js2-mode js-doc rvm pomodoro bbdb cpputils-cmake ace-window buffer-move counsel-gtags w3m unfill session winum emmet-mode groovy-mode regex-tool command-log-mode counsel-bbdb find-file-in-project counsel swiper ivy exec-path-from-shell git-timemachine textile-mode rainbow-delimiters scratch diminish jade-mode htmlize dictionary connection link haml-mode writeroom-mode nvm jump find-by-pinyin-dired pinyinlib diredfl findr paredit request wgrep gitconfig-mode gitignore-mode fringe-helper auto-yasnippet expand-region csv-mode popup avy amx async company-statistics cmake-mode markdown-mode company-tabnine org-bullets melancholy-theme afternoon-theme magit irony company-lua company-cmake company-c-headers ## company auto-correct))
  '(safe-local-variable-values
    '((company-clang-arguments "-I/usr/include/pcl-1.7/" "-I/usr/include/eigen3/"))))
 (custom-set-faces
@@ -38,51 +86,3 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-;; always show line number
-(global-linum-mode t)
-
-
-(setq inhibit-splash-screen t)
-(setq default-tab-width 4)
-(setq c-basic-offset 4)
-(setq c-default-style "linux" c-basic-offset 4)
-
-;; company settings
-;; ===================================================
-(require 'company)
-(require 'irony)
-(require 'company-irony)
-(add-hook 'c++-mode-hook 'company-mode)
-(add-hook 'c-mode-hook 'company-mode)
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(setq company-idle-delay 0)
-(setq company-minimum-prefix-length 2)
-(setq company-dabbrev-downcase nil)
-(add-to-list 'company-backends 'company-dabbrev)
-(add-to-list 'company-backends 'company-dabbrev-code)
-(add-to-list 'company-backends 'company-files)
-(add-to-list 'company-backends 'company-semantic)
-(add-to-list 'company-backends 'company-keywords)
-(add-to-list 'company-backends 'company-irony)
-;;(add-to-list 'company-backends 'company-gtags)
-(add-to-list 'company-backends 'company-capf)
-(require 'company-c-headers)
-(add-to-list 'company-c-headers-path-system "/usr/include/c++/4.9.2/")
-(add-to-list 'company-backends 'company-c-headers)
-(global-set-key (kbd "C-;") 'company-complete-common)
-;;使用M-n 和 M-p 选择候选项
-;;company 颜色设置
-(defun theme-dark ()
-  (interactive)
-   (set-face-foreground 'company-tooltip "#000")
-    (set-face-background 'company-tooltip "#fff")
-     (set-face-foreground 'company-scrollbar-bg "#fff")
-      (set-face-background 'company-scrollbar-fg "#999")
-)
-(theme-dark)
-;; end company settings
-
-(load-theme 'melancholy t)

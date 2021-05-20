@@ -2,7 +2,7 @@ request/
 .cask
 .cache
 .depend
-pyim/
+#pyim/
 anaconda-mode/
 .wg-file.el
 /url/cache
@@ -71,3 +71,4 @@ transient/
 elpy/
 package-quickstart.el
 .lsp-session*
+irony
