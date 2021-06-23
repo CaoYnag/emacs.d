@@ -4,4 +4,7 @@
 
   ;; do not indent when enter new line
   (setq org-adapt-indentation nil)
+
+  ;; 自动换行
+  (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
   )
