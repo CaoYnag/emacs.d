@@ -20,6 +20,8 @@
 (defconst my-lisp-dir (concat my-emacs-d "lisp")
   "Directory of lisp.")
 
+(defvar my-debug nil "Enable debug mode.")
+
 (defun my-vc-merge-p ()
   "Use Emacs for git merge only?"
   (boundp 'startup-now))

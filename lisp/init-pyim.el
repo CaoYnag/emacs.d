@@ -1,8 +1,9 @@
 (require 'pyim) ;; manual require here
+
 (with-eval-after-load 'pyim
   ;; 金手指设置，可以将光标处的编码，比如：拼音字符串，转换为中文。
   (global-set-key (kbd "M-j") 'pyim-convert-string-at-point)
-  
+  ;;  (global-set-key (kbd "M-j") '(lambda () (message "hello")))
   ;; 按 "C-<return>" 将光标前的 regexp 转换为可以搜索中文的 regexp.
   (define-key minibuffer-local-map (kbd "C-<return>") 'pyim-cregexp-convert-at-point)
   
@@ -17,15 +18,15 @@
   ;; 1. 光标只有在注释里面时，才可以输入中文。
   ;; 2. 光标前是汉字字符时，才能输入中文。
   ;; 3. 使用 M-j 快捷键，强制将光标前的拼音字符串转换为中文。
-  ;; (setq-default pyim-english-input-switch-functions
-  ;;               '(pyim-probe-dynamic-english
-  ;;                 pyim-probe-isearch-mode
-  ;;                 pyim-probe-program-mode
-  ;;                 pyim-probe-org-structure-template))
+  (setq-default pyim-english-input-switch-functions
+		'(pyim-probe-dynamic-english
+                  pyim-probe-isearch-mode
+                  pyim-probe-program-mode
+                  pyim-probe-org-structure-template))
   
-  ;; (setq-default pyim-punctuation-half-width-functions
-  ;;               '(pyim-probe-punctuation-line-beginning
-  ;;                 pyim-probe-punctuation-after-punctuation))
+  (setq-default pyim-punctuation-half-width-functions
+		'(pyim-probe-punctuation-line-beginning
+                  pyim-probe-punctuation-after-punctuation))
   
   ;; 开启代码搜索中文功能（比如拼音，五笔码等）
   (pyim-isearch-mode 1)
@@ -47,4 +48,5 @@
   (global-set-key (kbd "C-\\") 'toggle-input-method)
   (setq pyim-enable-shortcode nil)
   )
+
 (provide 'init-pyim)
