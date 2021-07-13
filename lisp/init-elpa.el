@@ -333,7 +333,7 @@ You still need modify `package-archives' in \"init-elpa.el\" to PERMANENTLY use 
 ;; (require-package 'pyim-basedict)
 (require-package 'esup)
 ;; (require-package 'eim) ; failed install
-
+;; (require-package 'ps-ccrypt)
 
 ;; {{ Fixed expiring GNU ELPA keys
 ;; GNU ELPA GPG key will expire on Sep-2019. So we need install this package to
@@ -350,6 +350,7 @@ You still need modify `package-archives' in \"init-elpa.el\" to PERMANENTLY use 
 (require-package 'which-key)
 (require-package 'highlight-symbol)
 
+(local-require 'ps-ccrypt) ;; manual copy to 'site-lisp from git repo.
 
 ;; kill buffer without my confirmation
 (setq kill-buffer-query-functions (delq 'process-kill-buffer-query-function kill-buffer-query-functions))
