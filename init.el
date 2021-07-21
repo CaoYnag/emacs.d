@@ -69,7 +69,9 @@
 (global-linum-mode t)
 (setq inhibit-splash-screen t)
 (setq default-tab-width 4)
-(setq c-basic-offset 4)
+(setq-default c-basic-offset 4
+	      tab-width 4
+	      indent-tabs-mode t)
 (setq c-default-style "linux" c-basic-offset 4)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
