@@ -22,3 +22,6 @@
 [submodule "site-lisp/pyim"]
 	path = site-lisp/pyim
 	url = https://github.com/tumashu/pyim
+[submodule "site-lisp/wakatime-mode"]
+	path = site-lisp/wakatime-mode
+	url = https://github.com/wakatime/wakatime-mode.git
