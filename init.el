@@ -12,10 +12,10 @@
 (setq gc-cons-threshold most-positive-fixnum)
 
 (defconst my-emacs-d (file-name-as-directory user-emacs-directory)
-  "Directory of emacs.d")
+  "Directory of emacs.d .")
 
 (defconst my-site-lisp-dir (concat my-emacs-d "site-lisp")
-  "Directory of site-lisp")
+  "Directory of site-lisp .")
 
 (defconst my-lisp-dir (concat my-emacs-d "lisp")
   "Directory of lisp.")
@@ -53,14 +53,21 @@
   (require-init 'init-elpa)
   
   (require-init 'init-company t)
+  (require-init 'init-citre)
   (require-init 'init-org)
+  (require-init 'init-org-roam)
   (require-init 'init-markdown t)
   ;; (require-init 'init-eim)
   (require-init 'init-pyim)
+  (require-init 'init-file-types)
+  (require-init 'init-writting)
+  (require-init 'init-wakatime)
   )
 
 (message "init list done")
 
+;; theme settings.
+;; just placed here. unnecessary to add a init-theme.el
 (add-to-list 'custom-theme-load-path (concat my-emacs-d "themes"))
 (load-theme 'melancholy t)
 
@@ -81,7 +88,7 @@
  '(custom-safe-themes
    '("716f0a8a9370912d9e6659948c2cb139c164b57ef5fda0f337f0f77d47fe9073" "57e3f215bef8784157991c4957965aa31bac935aca011b29d7d8e113a652b693" "032d5dc72a31ebde5fae25a8c1ef48bac6ba223588a1563d10dbf3a344423879" default))
  '(package-selected-packages
-   '(simple-httpd highlight-symbol which-key ace-pinyin org-re-reveal gnu-elpa-keyring-update eim esup pyim pdf-tools typescript-mode rust-mode nov vimrc-mode visual-regexp elpa-mirror toc-org shackle adoc-mode keyfreq auto-package-update counsel-css undo-fu undo-tree websocket iedit emms web-mode ivy-hydra hydra neotree legalese elpy lsp-mode company-native-complete native-complete yasnippet-snippets cliphist git-link tagedit rjsx-mode js2-mode js-doc rvm pomodoro bbdb cpputils-cmake ace-window buffer-move counsel-gtags w3m unfill session winum emmet-mode groovy-mode regex-tool command-log-mode counsel-bbdb find-file-in-project counsel swiper ivy exec-path-from-shell git-timemachine textile-mode rainbow-delimiters scratch diminish jade-mode htmlize dictionary connection link haml-mode writeroom-mode nvm jump find-by-pinyin-dired pinyinlib diredfl findr paredit request wgrep gitconfig-mode gitignore-mode fringe-helper auto-yasnippet expand-region csv-mode popup avy amx async company-statistics cmake-mode markdown-mode company-tabnine org-bullets melancholy-theme afternoon-theme magit irony company-lua company-cmake company-c-headers ## company auto-correct))
+   '(valign org-roam-server org-roam julia-repl julia-snail julia-mode flycheck simple-httpd highlight-symbol which-key ace-pinyin org-re-reveal gnu-elpa-keyring-update eim esup pyim pdf-tools typescript-mode rust-mode nov vimrc-mode visual-regexp elpa-mirror toc-org shackle adoc-mode keyfreq auto-package-update counsel-css undo-fu undo-tree websocket iedit emms web-mode ivy-hydra hydra neotree legalese elpy lsp-mode company-native-complete native-complete yasnippet-snippets cliphist git-link tagedit rjsx-mode js2-mode js-doc rvm pomodoro bbdb cpputils-cmake ace-window buffer-move counsel-gtags w3m unfill session winum emmet-mode groovy-mode regex-tool command-log-mode counsel-bbdb find-file-in-project counsel swiper ivy exec-path-from-shell git-timemachine textile-mode rainbow-delimiters scratch diminish jade-mode htmlize dictionary connection link haml-mode writeroom-mode nvm jump find-by-pinyin-dired pinyinlib diredfl findr paredit request wgrep gitconfig-mode gitignore-mode fringe-helper auto-yasnippet expand-region csv-mode popup avy amx async company-statistics cmake-mode markdown-mode company-tabnine org-bullets melancholy-theme afternoon-theme magit irony company-lua company-cmake company-c-headers ## company auto-correct wakatime-mode))
  '(safe-local-variable-values
    '((company-clang-arguments "-I/usr/include/pcl-1.7/" "-I/usr/include/eigen3/"))))
 (custom-set-faces

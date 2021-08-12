@@ -142,9 +142,9 @@
 (setq package-archives
       '(
 	;; ("gnu-tuna"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-        ;; ("melpa-tuna" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-	("melpa" . "https://mirrors.163.com/elpa/melpa/")
-        ("melpa-stable" . "https://mirrors.163.com/elpa/melpa-stable/")
+	;; ("melpa-tuna" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+	;; ("melpa" . "https://mirrors.163.com/elpa/melpa/")
+	;; ("melpa-stable" . "https://mirrors.163.com/elpa/melpa-stable/")
 	;; ("gnu-ec" . "http://elpa.emacs-china.org/gnu/")
 	;; ("melpa-ec" . "http://elpa.emacs-china.org/melpa/")
 	;; ("melpa stable-ec" . "http://elpa.emacs-china.org/melpa-stable/")
@@ -152,18 +152,21 @@
 	;; ("org-ec" . "http://elpa.emacs-china.org/org/")
 	;; ("sunrise-ec" . "http://elpa.emacs-china.org/sunrise-commander/")
 	;; ("user42-ec" . "http://elpa.emacs-china.org/user42/")
+	("gnu"   	. "http://elpa.emacs-china.org/gnu/")
+        ("melpa" 	. "http://elpa.emacs-china.org/melpa/")
+	("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
 	))
 
-(defvar my-ask-elpa-mirror t)
-(when (and (not noninteractive) ; no popup in batch mode
-           my-ask-elpa-mirror
-           (not (file-exists-p (file-truename (concat my-emacs-d "elpa"))))
-           (yes-or-no-p "Switch to faster package repositories in China temporarily?
-You still need modify `package-archives' in \"init-elpa.el\" to PERMANENTLY use this ELPA mirror."))
-  (setq package-archives
-        '(
-	  ("melpa" . "https://mirrors.163.com/elpa/melpa/")
-          ("melpa-stable" . "https://mirrors.163.com/elpa/melpa-stable/"))))
+;; (defvar my-ask-elpa-mirror t)
+;; (when (and (not noninteractive) ; no popup in batch mode
+;;            my-ask-elpa-mirror
+;;            (not (file-exists-p (file-truename (concat my-emacs-d "elpa"))))
+;;            (yes-or-no-p "Switch to faster package repositories in China temporarily?
+;; You still need modify `package-archives' in \"init-elpa.el\" to PERMANENTLY use this ELPA mirror."))
+;;   (setq package-archives
+;;         '(
+;; 	  ("melpa" . "https://mirrors.163.com/elpa/melpa/")
+;;       ("melpa-stable" . "https://mirrors.163.com/elpa/melpa-stable/"))))
 
 ;; Un-comment below line if you follow "Install stable version in easiest way"
 ;; (setq package-archives '(("myelpa" . "~/myelpa/")))
