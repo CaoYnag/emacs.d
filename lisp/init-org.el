@@ -13,4 +13,17 @@
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
   ;; valign to support table align
   (add-hook 'org-mode-hook #'valign-mode)
+
+  ;; encrypted file
+  (require 'epa-file)
+  (epa-file-enable)
+  (setq epa-file-encrypt-to '("CaoYangCS@outlook.com"))
+  (epa-file-select-keys 'silent)
+
+  ;; org crypt
+  (require 'org-crypt)
+  (org-crypt-use-before-save-magic)
+  (setq org-tags-exclude-from-inheritance (quote ("crypt")))
+  ;; TODO conf my email addr in global.
+  (org-crypt-key "CaoYangCS@outlook.com")
   )
