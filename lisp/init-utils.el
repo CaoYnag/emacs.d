@@ -594,5 +594,13 @@ Copied from 3rd party package evil-textobj."
       (if (my-font-face-similar-p f ff) (setq rlt t)))
     rlt))
 
+(defun insert-timestamp ()
+  "Insert current datetime in YYYY-mm-dd HH:MM:SS format."
+  (interactive)
+  (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
+
+;; mapping to a global hot key.
+(global-set-key (kbd "C-x c t") 'insert-timestamp)
+
 (provide 'init-utils)
 ;;; init-utils.el ends here
