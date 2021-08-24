@@ -61,7 +61,7 @@
   (require-init 'init-pyim)
   (require-init 'init-file-types)
   (require-init 'init-writting)
-  (require-init 'init-wakatime)
+  ;; (require-init 'init-wakatime) ;; stop use wakatime
   )
 
 (message "init list done")

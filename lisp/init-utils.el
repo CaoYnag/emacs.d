@@ -597,6 +597,7 @@ Copied from 3rd party package evil-textobj."
 (defun insert-timestamp ()
   "Insert current datetime in YYYY-mm-dd HH:MM:SS format."
   (interactive)
+  (when (use-region-p) (delete-region (region-beginning) (region-end)))
   (insert (format-time-string "%Y-%m-%d %H:%M:%S")))
 
 ;; mapping to a global hot key.
