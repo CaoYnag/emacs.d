@@ -141,10 +141,11 @@
 
 (setq package-archives
       '(
-	;; ("gnu-tuna"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-	;; ("melpa-tuna" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
-	;; ("melpa" . "https://mirrors.163.com/elpa/melpa/")
-	;; ("melpa-stable" . "https://mirrors.163.com/elpa/melpa-stable/")
+	("gnu-tuna"   . "https://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+	("melpa-tuna" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
+	("org" . "https://orgmode.org/elpa/")
+	;; ("melpa-163" . "https://mirrors.163.com/elpa/melpa/")
+	;; ("melpa-stable-163" . "https://mirrors.163.com/elpa/melpa-stable/")
 	;; ("gnu-ec" . "http://elpa.emacs-china.org/gnu/")
 	;; ("melpa-ec" . "http://elpa.emacs-china.org/melpa/")
 	;; ("melpa stable-ec" . "http://elpa.emacs-china.org/melpa-stable/")
@@ -152,9 +153,10 @@
 	;; ("org-ec" . "http://elpa.emacs-china.org/org/")
 	;; ("sunrise-ec" . "http://elpa.emacs-china.org/sunrise-commander/")
 	;; ("user42-ec" . "http://elpa.emacs-china.org/user42/")
-	("gnu"   	. "http://elpa.emacs-china.org/gnu/")
-        ("melpa" 	. "http://elpa.emacs-china.org/melpa/")
-	("melpa-stable" . "http://elpa.emacs-china.org/melpa-stable/")
+	;; ("gnu-ec"   	. "http://elpa.zilongshanren.com/gnu/")
+    ;; ("melpa-ec" 	. "http://elpa.emacs-chinazilongshanren.com/melpa/")
+	;; ("melpa-stable-ec" . "http://elpa.zilongshanren.com/melpa-stable/")
+	;; ("org-ec" . "http://elpa.zilongshanren.com/org/")
 	))
 
 ;; (defvar my-ask-elpa-mirror t)
