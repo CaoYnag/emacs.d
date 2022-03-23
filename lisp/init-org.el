@@ -37,6 +37,7 @@
   (setq org-roam-directory (file-truename my-roam-dir))
   (setq org-roam-db-location (file-truename (concat my-roam-dir "org-roam.db")))
   (setq org-roam-database-connector 'sqlite3)
+
   (setq org-roam-server-host "127.0.0.1"
         org-roam-server-port 8000
         org-roam-server-authenticate nil
