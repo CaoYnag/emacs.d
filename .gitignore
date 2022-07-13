@@ -75,3 +75,4 @@ elpy/
 package-quickstart.el
 .lsp-session*
 irony
+eln-cache
