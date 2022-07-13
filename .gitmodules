@@ -25,3 +25,6 @@
 [submodule "site-lisp/wakatime-mode"]
 	path = site-lisp/wakatime-mode
 	url = https://github.com/wakatime/wakatime-mode.git
+[submodule "site-lisp/ps-ccrypt"]
+	path = site-lisp/ps-ccrypt
+	url = git@github.com:njdan5691/ps-ccrypt.git

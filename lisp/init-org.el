@@ -37,7 +37,20 @@
   (setq org-roam-directory (file-truename my-roam-dir))
   (setq org-roam-db-location (file-truename (concat my-roam-dir "org-roam.db")))
   (setq org-roam-database-connector 'sqlite3)
-
+  (setq org-roam-mode-sections
+      '((org-roam-backlinks-section :unique t)
+        org-roam-reflinks-section
+		org-roam-unlinked-references-section))
+  (add-to-list 'display-buffer-alist
+             '("\\*org-roam\\*"
+               (display-buffer-in-side-window)
+               (side . right)
+               (slot . 0)
+               (window-width . 0.33)
+               (window-parameters . ((no-other-window . t)
+                                     (no-delete-other-windows . t)))))
+  (setq org-roam-graph-viewer "feh")
+  
   (setq org-roam-server-host "127.0.0.1"
         org-roam-server-port 8000
         org-roam-server-authenticate nil
