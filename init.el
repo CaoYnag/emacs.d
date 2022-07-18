@@ -81,6 +81,7 @@
 	      tab-width 4
 	      indent-tabs-mode t)
 (setq c-default-style "linux" c-basic-offset 4)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

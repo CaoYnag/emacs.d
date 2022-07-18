@@ -8,6 +8,8 @@
   ;; set org-timer clock sound
   ;; then use org-timer-set-timer org-timer-pause-or-continue org-timer-stop to ctrl a timer.
   (setq org-clock-sound "~/Music/sounds/DingLing.mp3")
+  ;; always show images when opening files.
+  (setq org-startup-with-inline-images t)
 
   ;; encrypted file
   (require 'epa-file)
@@ -38,21 +40,23 @@
   (setq org-roam-db-location (file-truename (concat my-roam-dir "org-roam.db")))
   (setq org-roam-database-connector 'sqlite3)
   (setq org-roam-mode-sections
-      '((org-roam-backlinks-section :unique t)
-        org-roam-reflinks-section
-		org-roam-unlinked-references-section))
+		'((org-roam-backlinks-section :unique t)
+          org-roam-reflinks-section
+		  org-roam-unlinked-references-section))
   (add-to-list 'display-buffer-alist
-             '("\\*org-roam\\*"
-               (display-buffer-in-side-window)
-               (side . right)
-               (slot . 0)
-               (window-width . 0.33)
-               (window-parameters . ((no-other-window . t)
-                                     (no-delete-other-windows . t)))))
+               '("\\*org-roam\\*"
+				 (display-buffer-in-side-window)
+				 (side . right)
+				 (slot . 0)
+				 (window-width . 0.33)
+				 (window-parameters . ((no-other-window . t)
+                                       (no-delete-other-windows . t)))))
   (setq org-roam-graph-viewer "feh")
-  
+  (org-roam-db-autosync-mode)
+
+  ;; conf org-roam-svr
   (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8000
+        org-roam-server-port 8080
         org-roam-server-authenticate nil
         org-roam-server-export-inline-images t
         org-roam-server-serve-files nil
@@ -62,6 +66,6 @@
         org-roam-server-network-label-truncate t
         org-roam-server-network-label-truncate-length 60
         org-roam-server-network-label-wrap-length 20)
-  (org-roam-db-autosync-mode)
-  ;; (org-roam-server-mode)
+
+  ;; (org-roam-server-mode) ;; enable global svr mode
   )
