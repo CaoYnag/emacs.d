@@ -32,7 +32,7 @@
   (add-hook 'org-mode-hook #'valign-mode)
 
   ;; roam
-  (setq org-roam-v2-ack t) ;; disable v2 warnings
+  ;; (setq org-roam-v2-ack t) ;; disable v2 warnings
   (defconst my-roam-dir "~/Documents/roam/")
   (if (not (file-directory-p my-roam-dir))
 	  (make-directory my-roam-dir))
@@ -54,18 +54,7 @@
   (setq org-roam-graph-viewer "feh")
   (org-roam-db-autosync-mode)
 
-  ;; conf org-roam-svr
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8080
-        org-roam-server-authenticate nil
-        org-roam-server-export-inline-images t
-        org-roam-server-serve-files nil
-        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20)
-
-  ;; (org-roam-server-mode) ;; enable global svr mode
+  ;; org roam ui
+  (setq org-roam-ui-open-on-start nil)
+  ;; (org-roam-ui-mode)
   )

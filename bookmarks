@@ -3,9 +3,9 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
- (filename . "~/Documents/roam/20220714101226-git.org")
- (front-context-string . "#+filetags: :git")
- (rear-context-string . "D:\n#+title: git\n")
- (position . 81)
- (last-modified 25295 55611 987554 344000))
+ (filename . "~/Documents/roam/20220802090610-pthread_once.org")
+ (front-context-string . "#+filetags: :c:c")
+ (rear-context-string . "e: pthread_once\n")
+ (position . 156)
+ (last-modified 25320 33633 143926 723000))
 )
