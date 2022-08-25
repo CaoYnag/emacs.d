@@ -3,9 +3,9 @@
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
 (("org-capture-last-stored"
- (filename . "~/Documents/roam/20220802090610-pthread_once.org")
- (front-context-string . "#+filetags: :c:c")
- (rear-context-string . "e: pthread_once\n")
- (position . 156)
- (last-modified 25320 33633 143926 723000))
+ (filename . "~/Documents/roam/20220824153549-rebind.org")
+ (front-context-string . "\na code snippet ")
+ (rear-context-string . "#+title: rebind\n")
+ (position . 84)
+ (last-modified 25349 57302 265924 432000))
 )

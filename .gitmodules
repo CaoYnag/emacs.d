@@ -28,3 +28,6 @@
 [submodule "site-lisp/ps-ccrypt"]
 	path = site-lisp/ps-ccrypt
 	url = git@github.com:njdan5691/ps-ccrypt.git
+[submodule "site-lisp/org-roam"]
+	path = site-lisp/org-roam
+	url = git@github.com:org-roam/org-roam.git
